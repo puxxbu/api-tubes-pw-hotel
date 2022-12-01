@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $request -> validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users',
             'password' => 'required'
@@ -21,15 +21,15 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
-            
+            'password' => bcrypt($request->password),
+
         ]);
 
         $token = $user->createToken('auth-sanctum')->plainTextToken;
-        
+
         return response()->json([
-            'data'=> $user,
-            'access_token'=> $token,
+            'data' => $user,
+            'access_token' => $token,
             'token_type' => 'Bearer'
         ]);
     }
