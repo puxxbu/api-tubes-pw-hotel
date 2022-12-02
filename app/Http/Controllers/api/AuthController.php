@@ -4,10 +4,12 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\LoginUserRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthController extends Controller
@@ -36,20 +38,38 @@ class AuthController extends Controller
         ]);
     }
 
-    public function login(LoginUserRequest $request)
+    public function login(Request $request)
     {
-        $request->validate($request->all());
-
-        if (!Auth::attempt($request->only(['email', 'password']))) {
-            return $this->error('', 'Credentials dont match', 401);
-        }
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
         $user = User::where('email', $request->email)->first();
 
+        if (!$user) {
+            return response([
+                'message' => 'Bad Credential'
+            ], 401);
+        }
+
+
+
         return response()->json([
             'data' => $user,
-            'access_token' => $user->createToken('Api Token of' . $user->name)->plainTextToken,
+            'access_token' => $user->createToken('auth-sanctum')->plainTextToken,
             'token_type' => 'Bearer'
         ]);
+    }
+
+
+    public function logout(Request $request)
+    {
+        /** @var \App\Models\User $user **/
+        $request->user()->currentAccessToken()->delete();
+
+        return [
+            'message' => 'Logged Out!'
+        ];
     }
 }
