@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\LoginUserRequest;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,6 +31,9 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('auth-sanctum')->plainTextToken;
+
+        event(new Registered($user));
+        auth()->login($user);
 
         return response()->json([
             'data' => $user,
