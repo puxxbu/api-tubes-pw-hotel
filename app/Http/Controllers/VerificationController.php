@@ -50,7 +50,8 @@ class VerificationController extends Controller
         }
 
         return [
-            'message' => 'Email has been verified'
+            'message' => 'Email has been verified',
+            view('verified')
         ];
     }
 }

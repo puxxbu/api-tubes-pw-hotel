@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Email Verified!</title>
 
     <!-- Fonts -->
 
@@ -140,8 +140,8 @@
                             </div> --}}
                         </div>
                         <div>
-                            <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
-                                Anda Tersesat? </h1>
+                            <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">Selamat Anda telah
+                                berhasil melakukan verifikasi email !</h1>
                             <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center">Ingin kembali melanjutkan ke
                                 website Hotel kami? Klik tombol berikut</p>
                             <div class="mt-8 flex gap-x-4 sm:justify-center">

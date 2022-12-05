@@ -33,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
 
             return (new MailMessage)
                 ->subject('Verify Email Address')
-                ->line('Click The button')
+                ->line('Silahkan Click Button ini untuk melakukan verifikasi email')
                 ->action('Verify Email', $spaUrl);
         });
 
