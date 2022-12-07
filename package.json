@@ -1,8 +1,10 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "prestart": "npm run build",
+        "build": "npx vite build",
+        "start": "node server.js",
+        "dev": "vite"
     },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
