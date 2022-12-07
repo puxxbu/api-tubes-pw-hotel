@@ -177,6 +177,6 @@
 
 </body>
 
-@vite('resources/css/app.css')
+{{-- @vite('resources/css/app.css') --}}
 
 </html>
