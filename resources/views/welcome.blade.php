@@ -12,7 +12,7 @@
 
     <!-- Styles -->
 
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -177,6 +177,6 @@
 
 </body>
 
-@vite('resources/css/app.css')
+
 
 </html>
