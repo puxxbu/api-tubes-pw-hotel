@@ -3,6 +3,10 @@
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\api\EmailVerificationController;
+use App\Http\Controllers\KamarController;
+use App\Http\Controllers\PesananMakananController;
+use App\Models\Kamar;
+use App\Models\PesananMakanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +42,8 @@ Route::post('/email/verification-notification', [EmailVerificationController::cl
 Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//route pesanan
+Route::apiResource('pesanan-makanan', PesananMakananController::class);
+//route kamar
+Route::apiResource('kamar', KamarController::class);
