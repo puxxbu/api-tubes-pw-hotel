@@ -45,17 +45,27 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email:rfc,dns',
             'password' => 'required'
         ]);
 
         $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
-            return response([
-                'message' => 'Bad Credential'
-            ], 401);
+        // if (!$user) {
+        //     return response([
+        //         'message' => 'Bad Credential'
+        //     ], 401);
+        // }
+
+        if (!Auth::attempt($request->all())) {
+            return response(['message' => 'Invalid Credential'], 401);
         }
+
+        if ($user->email_verified_at == null) {
+            return response(['message' => 'Verifikasi Email Terlebih dahulu'], 401);
+        }
+
+
 
 
 

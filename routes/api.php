@@ -25,14 +25,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+
 // Route::get('/login', function () {
 //     return "selamat datang di login";
 // });
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+// Route::group(['middleware' => ['verified']], function () {
+//     Route::post('/login', [AuthController::class, 'login']);
+// });
+
+Route::middleware([])->post('/login', [AuthController::class, 'login']);
 
 // Auth::routes(['verify' => true]);
 
