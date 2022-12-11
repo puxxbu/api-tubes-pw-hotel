@@ -5,8 +5,10 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\api\EmailVerificationController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PesananMakananController;
+use App\Http\Controllers\ReservasiController;
 use App\Models\Kamar;
 use App\Models\PesananMakanan;
+use App\Models\Reservasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,3 +49,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user', function (Request 
 Route::apiResource('pesanan-makanan', PesananMakananController::class);
 //route kamar
 Route::apiResource('kamar', KamarController::class);
+//route reservasi
+Route::apiResource('reservasi',ReservasiController::class);
