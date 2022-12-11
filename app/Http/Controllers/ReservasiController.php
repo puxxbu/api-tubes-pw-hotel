@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ReservasiController extends Controller
-{ 
+{
     // protected function validator(array $data)
     // {
     //     return Validator::make($data, [
@@ -37,7 +37,7 @@ class ReservasiController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'tipe_kamar' => 'required|string|max:255',
             'nama_pemesan' => 'required|string|max:255',
             'tanggal_masuk' => 'required|date',
@@ -73,7 +73,7 @@ class ReservasiController extends Controller
     //     return response()::json(["reservasi"=>$reservasi]);
     // }
 
-    public function show(Request $request,$nama_user)
+    public function show(Request $request, $nama_user)
     {
 
         $reservasi = Reservasi::where('nama_pemesan', $nama_user)->first();
@@ -91,15 +91,29 @@ class ReservasiController extends Controller
         ]);
     }
 
-    public function update(Request $request, $nama_user)
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Reservasi  $reservasi
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Reservasi $reservasi)
     {
-        $validator = Validator::make($request->all(),[
-            'tipe_kamar' => 'required','string','max:255',
-            'nama_pemesan' => 'required','string','max:255',
-            'tanggal_masuk' => 'required','date',
-            'tanggal_keluar' => 'required','date','after_or_equal:tanggal_masuk',
-            'status' => 'required','string','max:255'
+
+
+        $validator = Validator::make($request->all(), [
+            'tipe_kamar' => 'required', 'string', 'max:255',
+            'nama_pemesan' => 'required', 'string', 'max:255',
+            'tanggal_masuk' => 'required', 'date',
+            'tanggal_keluar' => 'required', 'date', 'after_or_equal:tanggal_masuk',
+            'status' => 'required', 'string', 'max:255'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
         // if ($validator->fails()) {
         //     return response()->json([
         //         'data' => [],
@@ -107,19 +121,19 @@ class ReservasiController extends Controller
         //         'success' => false
         //     ]);
         // }
-        // $reservasi->tipe_kamar = $request->tipe_kamar;
-        // $reservasi->nama_pemesan = $request->nama_pemesan;
-        // $reservasi->tanggal_masuk = $request->tanggal_masuk;
-        // $reservasi->tanggal_keluar = $request->tanggal_keluar;
-        // $reservasi->status = $request->status;
+        $reservasi->tipe_kamar = $request->tipe_kamar;
+        $reservasi->nama_pemesan = $request->nama_pemesan;
+        $reservasi->tanggal_masuk = $request->tanggal_masuk;
+        $reservasi->tanggal_keluar = $request->tanggal_keluar;
+        $reservasi->status = $request->status;
 
-        // $reservasi->save();
+        $reservasi->save();
 
-        Reservasi::find($nama_user)->update($request->all());
+        // Reservasi::find($nama_user)->update($request->all());
 
-        // return response()->json([
-        //     'data' => $reservasi
-        // ]);
+        return response()->json([
+            'data' => $reservasi
+        ]);
     }
 
     public function destroy(Request $request)
