@@ -99,7 +99,7 @@ class ReservasiController extends Controller
      * @param  \App\Models\Reservasi  $reservasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservasi $reservasi)
+    public function update(Request $request, $id)
     {
 
 
@@ -121,6 +121,7 @@ class ReservasiController extends Controller
         //         'success' => false
         //     ]);
         // }
+        $reservasi = Reservasi::find($id);
         $reservasi->tipe_kamar = $request->tipe_kamar;
         $reservasi->nama_pemesan = $request->nama_pemesan;
         $reservasi->tanggal_masuk = $request->tanggal_masuk;
@@ -136,10 +137,10 @@ class ReservasiController extends Controller
         ]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request,$id)
     {
-        $request->Reservasi()->delete();
-
+        $reservasi = Reservasi::find($id);
+        $reservasi->delete();
         return [
             'message' => 'Deleted'
         ];
