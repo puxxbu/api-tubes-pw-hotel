@@ -45,7 +45,7 @@ class PesananMakananController extends Controller
             [
                 'nama_pesanan' => 'required',
                 'harga' => 'required',
-                'jam_antar' => 'required',
+                // 'jam_antar' => 'required',
                 'user_id' => 'required'
             ],
         );
@@ -57,7 +57,7 @@ class PesananMakananController extends Controller
         $pesanan = PesananMakanan::create([
             'nama_pesanan' => $request->nama_pesanan,
             'harga' => $request->harga,
-            'jam_antar' => $request->jam_antar,
+            // 'jam_antar' => $request->jam_antar,
             'user_id' => $request->user_id,
 
         ]);
@@ -130,7 +130,7 @@ class PesananMakananController extends Controller
     {
         $pesananMakanan->nama_pesanan = $request->nama_pesanan;
         $pesananMakanan->harga = $request->harga;
-        $pesananMakanan->jam_antar = $request->jam_antar;
+        // $pesananMakanan->jam_antar = $request->jam_antar;
         $pesananMakanan->user_id = $request->user_id;
 
         $pesananMakanan->save();

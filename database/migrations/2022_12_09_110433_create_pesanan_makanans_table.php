@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_pesanan'); // dimasukan dalam bentuk list ',' aja ex: ayam,tahu,es teh
             // $table->string('jenis');
             $table->integer('harga');
-            $table->string('jam_antar');
+            // $table->string('jam_antar');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
