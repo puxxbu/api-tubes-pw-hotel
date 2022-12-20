@@ -16,7 +16,7 @@ class PesananMakanan extends Model
         'nama_pesanan', // Ayam,Es teh, pudding
         // 'jenis',
         'harga', // 30.000
-        'jam_antar', // 18.00
+        // 'jam_antar', // 18.00
         'user_id' // 1
     ];
 
