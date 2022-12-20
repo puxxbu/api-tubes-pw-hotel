@@ -77,10 +77,10 @@ class PesananMakananController extends Controller
     public function show($cari = null)
     {
         $data = PesananMakanan::query()
-            ->where('nama_pesanan', 'ilike', '%' . $cari . '%')
-            ->orWhere('harga', 'ilike', '%' . $cari . '%')
-            ->orWhere('jam_antar', 'ilike', '%' . $cari . '%')
-            ->orWhere('id', 'ilike', $cari)
+            // ->where('nama_pesanan', 'ilike', '%' . $cari . '%')
+            // ->orWhere('harga', 'ilike', '%' . $cari . '%')
+            // ->orWhere('jam_antar', 'ilike', '%' . $cari . '%')
+            ->where('id', 'ilike', $cari)
             ->get();
         if (count($data) > 1) {
             return response()->json([
