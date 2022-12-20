@@ -143,7 +143,7 @@
                         <div>
                             <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">Selamat Anda telah
                                 berhasil melakukan verifikasi email !</h1>
-                            <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center">Ingin kembali melanjutkan ke
+                            {{-- <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center">Ingin kembali melanjutkan ke
                                 website Hotel kami? Klik tombol berikut</p>
                             <div class="mt-8 flex gap-x-4 sm:justify-center">
                                 <a href="#"
@@ -152,7 +152,7 @@
                                     <span class="text-indigo-200" aria-hidden="true">&rarr;</span>
                                 </a>
 
-                            </div>
+                            </div> --}}
                         </div>
                         <div
                             class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
