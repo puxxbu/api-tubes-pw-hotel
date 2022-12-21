@@ -31,8 +31,10 @@ class ReservasiController extends Controller
     // }
     public function index()
     {
-        $reservasi = Reservasi::get();
-        return response()->json(["reservasi" => $reservasi], 200);
+        $reservasi = Reservasi::all();
+        return response()->json([
+            'data' => $reservasi
+        ]);
     }
 
     public function store(Request $request)
@@ -59,6 +61,7 @@ class ReservasiController extends Controller
         // event(new Reservasi($reservasi));
 
         return response()->json([
+            'message' => 'Add Reservasi success',
             'data' => $reservasi,
         ]);
     }
