@@ -72,11 +72,10 @@ class ReservasiController extends Controller
     //     return response()::json(["reservasi"=>$reservasi]);
     // }
 
-    public function show(Request $request, $nama_user)
+    public function show(Request $request, $id)
     {
 
-        $reservasi = Reservasi::where('nama_pemesan', $nama_user)->first();
-
+        $reservasi = Reservasi::where('id', $id)->first();
         if (!$reservasi) {
             return response([
                 'message' => 'Reservasi Kosong'
@@ -100,11 +99,9 @@ class ReservasiController extends Controller
      */
     public function update(Request $request, Reservasi $reservasi)
     {
-
-
         $validator = Validator::make($request->all(), [
             'tipe_kamar' => 'required', 'string', 'max:255',
-            'nama_pemesan' => 'required', 'string', 'max:255',
+            // 'nama_pemesan' => 'required', 'string', 'max:255',
             'tanggal_masuk' => 'required', 'date',
             'tanggal_keluar' => 'required', 'date', 'after_or_equal:tanggal_masuk',
             'status' => 'required', 'string', 'max:255'
@@ -121,7 +118,7 @@ class ReservasiController extends Controller
         //     ]);
         // }
         $reservasi->tipe_kamar = $request->tipe_kamar;
-        $reservasi->nama_pemesan = $request->nama_pemesan;
+        // $reservasi->nama_pemesan = $request->nama_pemesan;
         $reservasi->tanggal_masuk = $request->tanggal_masuk;
         $reservasi->tanggal_keluar = $request->tanggal_keluar;
         $reservasi->status = $request->status;
