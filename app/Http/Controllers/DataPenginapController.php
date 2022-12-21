@@ -47,7 +47,8 @@ class DataPenginapController extends Controller
                 'nama' => 'required',
                 'tanggal_lahir' => 'required',
                 'wilayah' => 'required',
-                'jenis_kelamin' => 'required'
+                'jenis_kelamin' => 'required',
+                'user_id' => 'required'
             ],
         );
 
@@ -60,7 +61,8 @@ class DataPenginapController extends Controller
             'nama' => $request->nama,
             'tanggal_lahir' => $request->tanggal_lahir,
             'wilayah' => $request->wilayah,
-            'jenis_kelamin' => $request->jenis_kelamin
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'user_id' => $request->user_id
 
         ]);
 
@@ -133,6 +135,7 @@ class DataPenginapController extends Controller
         $dataPenginap->tanggal_lahir = $request->tanggal_lahir;
         $dataPenginap->nik = $request->nik;
         $dataPenginap->jenis_kelamin = $request->jenis_kelamin;
+        $dataPenginap->user_id = $request->user_id;
 
 
         $dataPenginap->save();
