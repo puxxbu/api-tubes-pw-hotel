@@ -58,4 +58,4 @@ Route::apiResource('pesanan-makanan', PesananMakananController::class);
 Route::apiResource('kamar', KamarController::class);
 //route reservasi
 Route::apiResource('reservasi', ReservasiController::class);
-Route::apiResource('datapenginap', DataPenginapController::class);
+Route::apiResource('data-penginap', DataPenginapController::class);
