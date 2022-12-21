@@ -45,11 +45,7 @@ class ReservasiController extends Controller
             'status' => 'required|string|max:255'
         ]);
         if ($validator->fails()) {
-            return response()->json([
-                'data' => [],
-                'message' => $validator->errors(),
-                'success' => false
-            ]);
+            return response()->json($validator->errors(), 422);
         }
 
         $reservasi = Reservasi::create([

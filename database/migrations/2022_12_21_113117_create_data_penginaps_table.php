@@ -16,13 +16,11 @@ return new class extends Migration
         Schema::create('data_penginaps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('nik'); // dimasukan dalam bentuk list ',' aja ex: ayam,tahu,es teh
-            // $table->string('jenis');
+            $table->string('nik');
             $table->string('nama');
             $table->string('wilayah');
             $table->string('jenis_kelamin');
             $table->date('tanggal_lahir');
-            // $table->string('jam_antar');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
