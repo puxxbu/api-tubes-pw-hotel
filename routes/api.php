@@ -3,6 +3,7 @@
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\api\EmailVerificationController;
+use App\Http\Controllers\DataPenginapController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PesananMakananController;
 use App\Http\Controllers\ReservasiController;
@@ -56,4 +57,5 @@ Route::apiResource('pesanan-makanan', PesananMakananController::class);
 //route kamar
 Route::apiResource('kamar', KamarController::class);
 //route reservasi
-Route::apiResource('reservasi',ReservasiController::class);
+Route::apiResource('reservasi', ReservasiController::class);
+Route::apiResource('datapenginap', DataPenginapController::class);
