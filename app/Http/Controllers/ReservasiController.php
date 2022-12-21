@@ -132,9 +132,9 @@ class ReservasiController extends Controller
         ]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request,$id)
     {
-        $request->Reservasi()->delete();
+        Reservasi::where('id', $id)->delete();
 
         return [
             'message' => 'Deleted'
