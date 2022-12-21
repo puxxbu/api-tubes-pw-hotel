@@ -86,4 +86,26 @@ class AuthController extends Controller
             'message' => 'Logged Out!'
         ];
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
+    {
+        $user->name = $request->name;
+        $user->tanggal_lahir = $request->tanggal_lahir;
+        $user->wilayah = $request->wilayah;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+
+        $user->save();
+
+        return response()->json([
+            'data' => $user,
+            'message' => 'Update Berhasil'
+        ]);
+    }
 }

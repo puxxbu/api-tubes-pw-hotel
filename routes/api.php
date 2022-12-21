@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 // });
 
 Route::middleware([])->post('/login', [AuthController::class, 'login']);
+Route::middleware([])->put('/update-user/{user}', [AuthController::class, 'update']);
 
 // Auth::routes(['verify' => true]);
 
